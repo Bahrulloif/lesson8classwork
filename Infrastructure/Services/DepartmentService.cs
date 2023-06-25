@@ -21,10 +21,11 @@ public class DepartmentService
         _departments.Add(department);
     }
 
-    public Department UpdateDepartment(Department d)
+    public Department? UpdateDepartment(Department d)
     {
         foreach (var dep in _departments)
         {
+
             if (dep.Id == d.Id)
             {
                 dep.Name = d.Name;
@@ -35,16 +36,18 @@ public class DepartmentService
         }
         return null;
     }
-public string DeleteDepartment(int id){
-foreach (var d in _departments)
-{
-    if (d.Id==id){
-        _departments.Remove(d);
-        System.Console.WriteLine("Department Delete successfuly");
+    public string DeleteDepartment(int id)
+    {
+        foreach (var d in _departments)
+        {
+            if (d.Id == id)
+            {
+                _departments.Remove(d);
+                return "Department Delete successfuly";
+            }
+        }
+        return "Department is not Found";
     }
-}
-return "Department is not Found";
-}
     public int CountDepartment()
     {
         return _departments.Count;
